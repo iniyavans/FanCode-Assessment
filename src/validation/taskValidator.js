@@ -19,8 +19,6 @@ class TaskValidator {
         try {
             const completionPercentage = this.calculateCompletionPercentage(todos); // Get the completion percentage value of all the users.
 
-            console.log(completionPercentage);
-
             return completionPercentage > 50; // Return the user details who completes the task more than 50%.
 
         } catch (error) {
