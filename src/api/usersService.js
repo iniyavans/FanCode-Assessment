@@ -1,6 +1,23 @@
 const apiClient = require('./apiClient');
 
+/**
+ * UsersService class provides methods to interact with user data.
+ * It uses the apiClient to make API calls to retrieve user information.
+ */
 class UsersService {
+  /**
+   * Retrieves a list of users who are located within a specific geographic region.
+   * The region is defined by latitude between -40 and 5, and longitude between 5 and 100.
+   * 
+   * @async
+   * @returns {Promise<Array>} A promise that resolves to an array of user objects.
+   * 
+   * @example
+   * const usersService = new UsersService();
+   * const usersInFanCode = await usersService.getUsersInFanCode();
+   * console.log(usersInFanCode);
+   */
+
   async getUsersInFanCode() {
     const users = await apiClient.get('/users'); // Get the user details.
 
@@ -16,6 +33,18 @@ class UsersService {
     }
   }
 
+  /**
+   * Retrieves a list of todos for a specific user.
+   * 
+   * @async
+   * @param {number} userId The ID of the user.
+   * @returns {Promise<Array>} A promise that resolves to an array of todo objects.
+   * @example
+   * const usersService = new UsersService();
+   * const userTodos = await usersService.getUserTodos(1);
+   * console.log(userTodos);
+   */
+  
   async getUserTodos(userId) {
     try {
       return await apiClient.get('/todos', { userId }); // Return the user todo details based on the user  id.
