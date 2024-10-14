@@ -17,9 +17,15 @@ class TaskValidator {
 
     validateCompletion(todos) {
         try {
-            const completionPercentage = this.calculateCompletionPercentage(todos); // Get the completion percentage value of all the users.
 
-            return completionPercentage > 50; // Return the user details who completes the task more than 50%.
+            let completionPercentage = this.calculateCompletionPercentage(todos); // Get the completion percentage value of all the users.
+
+            completionPercentage = parseFloat(completionPercentage.toFixed(2));  // Round to 2 decimal places
+
+            return {
+                completionPercentage, // Return the value of completed task percentage.
+                isAboveThreshold: completionPercentage > 50
+            };
 
         } catch (error) {
 
